@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AccelerometerFragment.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/accelerometer_value"
+        android:layout_width="match_parent"
+        android:layout_height="744dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Accelerometer Value"
+        android:textSize="24sp" />
+
+</FrameLayout>
