@@ -1,4 +1,4 @@
-package com.example.sensorall.ui.notifications;
+package com.example.sensorall.ui.light;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -11,14 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sensorall.R;
-import com.example.sensorall.databinding.FragmentNotificationsBinding;
 
-public class NotificationsFragment extends Fragment implements SensorEventListener {
+public class LightFragment extends Fragment implements SensorEventListener {
 
     private SensorManager sensorManager;
     private TextView accelerometerValue;
@@ -26,22 +23,27 @@ public class NotificationsFragment extends Fragment implements SensorEventListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_proximity, container, false);
         accelerometerValue = view.findViewById(R.id.accelerometer_value);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        Sensor accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        Sensor light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        sensorManager.registerListener(this, light, SensorManager.SENSOR_DELAY_NORMAL);
         return view;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float x = event.values[0];
-        float y = event.values[1];
-        float z = event.values[2];
-
-        String accelerometerData = "Value of Gyroscope \nX: " + x + "\nY: " + y + "\nZ: " + z;
-        accelerometerValue.setText(accelerometerData);
+        float lux  = event.values[0];
+        String text =
+                lux > 20000 ? "This light will blind you":
+                lux > 5000  ? "Incredibly bright":
+                lux > 1000 ? "Normal":
+                lux > 100 ? "Grey":
+                lux > 1 ? "Dark":
+                lux == 0 ? "Pitch black" : ""
+                ;
+        String light_data = "Value of Light sensor \nSensor: " + lux + " lux\n" + text;
+        accelerometerValue.setText(light_data);
     }
 
     @Override

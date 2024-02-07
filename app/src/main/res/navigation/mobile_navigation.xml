@@ -7,24 +7,20 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.sensorall.ui.home.HomeFragment"
+        android:name="com.example.sensorall.ui.proximity.ProximityFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_proximity" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.sensorall.ui.dashboard.DashboardFragment"
+        android:name="com.example.sensorall.ui.light.LightFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_light" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.sensorall.ui.notifications.NotificationsFragment"
+        android:name="com.example.sensorall.ui.temperature.TemperatureFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/navigation_magnetic"
-        android:name="com.example.sensorall.ui.magnetic.MagneticFragment"
-        android:label="fragment_magnetic"
-        tools:layout="@layout/fragment_magnetic" />
+        tools:layout="@layout/fragment_temperature" />
+
 </navigation>
